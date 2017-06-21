@@ -1,0 +1,90 @@
+----------------------È«¾Ö----------------------*/
+*{
+    padding:0;margin:0;
+}
+html,body{
+    height:100%;color:teal;-webkit-user-select: none;font-family: Arial;
+}
+a{text-decoration: none;color:inherit;transition: all 0.5s;}
+a:hover{color:teal;}
+input::-webkit-input-placeholder{
+    color:orange;
+}
+input:-ms-input-placeholder{
+    color:orange;
+}
+
+/*----------------------È«¾Ö----------------------*/
+
+
+
+/*----------------------µ¼º½----------------------*/
+.bc_img{
+    position: fixed;left:0;top:0;width: 100%;
+}
+/*------------µã»÷³öÏÖµ¼º½------------*/
+
+#con-head{
+    position: fixed;left:39px;top:50px;
+    transition: all 1s;
+    height:26px;z-index: 999;
+    cursor: pointer;
+}
+#con-head>div{
+    height:0;width: 20px;border-bottom:1px solid white;margin-top:6px; transition: all 0.5s;
+}
+#con-head .one{
+        transform-origin: right top;
+        transform: rotate(-45deg);
+}
+#con-head .two{
+        border-bottom-color: transparent;
+}
+#con-head .three{
+        transform-origin: right bottom;
+        transform:rotate(45deg);
+}
+/*光晕效果*/
+#con-head:before{
+    content:"";
+    width:20px;
+    height:20px;
+    border:1px solid white;
+    border-radius: 20px;
+    position: absolute;
+    left:-1px;top:2px;
+}
+/*光晕效果*/
+/*------------µã»÷³öÏÖµ¼º½------------*/
+
+/*------------µ¼º½ÄÚÈÝ----------------*/
+#header{
+    position: fixed;left:15px;top:54px;
+}
+#header>div{  
+    opacity: 0;  
+    position: absolute;
+    transition: all 0.5s;
+}
+
+
+@media screen and (max-width: 415px){
+            #con-head{
+               left:29px;
+            }   
+        
+            #header{
+                left:80px;
+               
+                width:500px;
+                
+            }
+            #header>div{
+                margin-left:30px;
+            }
+            
+        }
+/*------------µ¼º½ÄÚÈÝ-----------------*/
+
+
+/*----------------------µ¼º½----------------------

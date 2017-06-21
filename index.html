@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no"/>
+    <title>张鑫</title>
+    <link rel="icon" href="http://orj6ooggn.bkt.clouddn.com/icon.png">
+    <link rel="stylesheet" href="css/zhang.css"/>
+    <style>
+        body{color:white;}
+        a:hover{color:orange;}
+        
+        #con-head:hover div{
+            border-bottom-color: orange;
+        }
+        #con-head:hover div.two{
+            border-bottom-color: transparent;
+        }
+        .bc-logo{
+            position:absolute;
+            left:70px;
+            top:60%;
+            font-family: Arial;
+            font-size: 70px;
+            transition: all 1s;cursor:pointer;
+        }
+        .bc-logo:hover{
+            left:100px;color:orange;
+        }
+
+       
+        @media screen and (max-width: 1023px) and (min-width: 763px){
+            .bc-logo{
+                top:69%;font-size: 50px;left:50px;
+            }
+            .bc_img{
+                left: -775px;width: 1862px;height: 100%;
+            }   
+        }
+        @media screen and (max-width: 415px){
+            .bc-logo{
+                top:69%;font-size: 45px;left:40px;
+            }
+            .bc_img{
+                left: -580px;width: 1191px;height: 100%;
+            }           
+        }
+        #header>div{left:15px;}
+        #header>.m{opacity: 1;left: 100px;}
+        #header>.b{opacity: 1;left: 200px;}
+        #header>.a{opacity: 1;left: 300px;}
+        #header>.z{opacity: 1;left: 400px;}
+
+        
+
+    </style>
+</head>
+<body>
+<img class="bc_img" src="http://orj6ooggn.bkt.clouddn.com/wallhaven-518771.jpg">
+<!--<a href="#"><img id="bc_font" src="http://orj6ooggn.bkt.clouddn.com/bc_font01.png"></a>-->
+<div class="bc-logo">I can and I will</div>
+<!--头部-->
+<div id="con-head">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<header id="header">
+    <div id="Music"><a href="zx/music.html">Music</a></div>
+    <div id="blog"><a href="zx/blog.html">Blog</a></div>
+    <div id="audio"><a href="#">Audio</a></div>
+    <div id="Personal"><a href="#">Zhangss</a></div>
+</header>
+<!--头部-->
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    $("#con-head").click(function(){
+          
+            
+        $("#Music").toggleClass('m');
+        $("#blog").toggleClass('b');
+        $("#audio").toggleClass('a');
+        $("#Personal").toggleClass('z');
+
+        $("#con-head>div:nth-child(1)").toggleClass("one");
+        $("#con-head>div:nth-child(2)").toggleClass("two");
+        $("#con-head>div:nth-child(3)").toggleClass("three");
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no"/>
+    <title>张鑫</title>
+    <link rel="icon" href="http://orj6ooggn.bkt.clouddn.com/icon.png">
+    <link rel="stylesheet" href="../css/zhang.css"/>
+    <style>
+        body{color:white;}
+        a:hover{color:teal;}
+        #con-head:hover div{
+            border-bottom-color: teal;
+        }
+
+        @media screen and (max-width: 1023px) and (min-width: 763px){
+            
+            .bc_img{
+                left: -1316px;width: 2083px;            }   
+        }
+        @media screen and (max-width: 415px){
+            .bc_img{
+                left:-860px;width: 1274px;height: 100%;
+            }           
+        }
+        #con-head:hover div{
+            border-bottom-color: teal;
+        }
+        #con-head:hover div.two{
+            border-bottom-color: transparent;
+        }
+        #header>div{left:15px;}
+        #header>.h{opacity: 1;left: 100px;}
+        #header>.m{opacity: 1;left: 200px;}
+        #header>.a{opacity: 1;left: 300px;}
+        #header>.z{opacity: 1;left: 400px;}
+    </style>
+</head>
+<body>
+<img class="bc_img" src="http://orj6ooggn.bkt.clouddn.com/wallhaven-138082.jpg">
+<!--头部-->
+<div id="con-head">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<header id="header">
+    <div id="Home"><a href="../index.html">Home</a></div>
+    <div id="Music"><a href="music.html">Music</a></div>
+    <div id="audio"><a href="#">Audio</a></div>
+    <div id="Personal"><a href="#">Zhangss</a></div>
+</header>
+<!--头部-->
+
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+    $("#con-head").click(function(){
+          
+            
+        $("#Home").toggleClass('h');
+        $("#Music").toggleClass('m');
+        $("#audio").toggleClass('a');
+        $("#Personal").toggleClass('z');
+
+        $("#con-head>div:nth-child(1)").toggleClass("one");
+        $("#con-head>div:nth-child(2)").toggleClass("two");
+        $("#con-head>div:nth-child(3)").toggleClass("three");
+    })
+
+</script>
+</body>
+</html>
