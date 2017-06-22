@@ -7,56 +7,139 @@
     <link rel="icon" href="http://orj6ooggn.bkt.clouddn.com/icon.png">
     <link rel="stylesheet" href="css/zhang.css"/>
     <style>
-        body{color:white;}
-        a:hover{color:orange;}
-        
-        #con-head:hover div{
-            border-bottom-color: orange;
+        body {
+            color: white;
         }
-        #con-head:hover div.two{
+
+        a:hover {
+            color: black;
+        }
+
+        .snow {
+            position: fixed;
+            top: 0;
+            color: #ecf0f1;
+            z-index: 1;
+            width: 32px;
+            height: 32px;
+            background-image: url(img/p.png);
+            animation: snow 3s infinite alternate linear;
+
+        }
+
+        @keyframes snow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(180deg);
+            }
+        }
+
+        #con-head:hover div {
+            border-bottom-color: black;
+        }
+
+        #con-head:hover div.two {
             border-bottom-color: transparent;
         }
-        .bc-logo{
-            position:absolute;
-            left:70px;
-            top:60%;
+
+        .bc-logo {
+            position: absolute;
+            left: 70px;
+            top: 60%;
             font-family: Arial;
             font-size: 70px;
-            transition: all 1s;cursor:pointer;
-        }
-        .bc-logo:hover{
-            left:100px;color:orange;
+            transition: all 1s;
+            cursor: pointer;
         }
 
-       
-        @media screen and (max-width: 1023px) and (min-width: 763px){
-            .bc-logo{
-                top:69%;font-size: 50px;left:50px;
-            }
-            .bc_img{
-                left: -775px;width: 1862px;height: 100%;
-            }   
+        .bc-logo:hover {
+            left: 100px;
+            color: black;
         }
-        @media screen and (max-width: 415px){
-            .bc-logo{
-                top:69%;font-size: 45px;left:40px;
-            }
-            .bc_img{
-                left: -580px;width: 1191px;height: 100%;
-            }           
-        }
-        #header>div{left:15px;}
-        #header>.m{opacity: 1;left: 100px;}
-        #header>.b{opacity: 1;left: 200px;}
-        #header>.a{opacity: 1;left: 300px;}
-        #header>.z{opacity: 1;left: 400px;}
 
-        
+        @media screen and (max-width: 1023px) and (min-width: 763px) {
+            .bc-logo {
+                top: 69%;
+                font-size: 50px;
+                left: 50px;
+            }
+
+            .bc_img {
+                left: -775px;
+                width: 1862px;
+                height: 100%;
+            }
+        }
+
+        @media screen and (max-width: 415px) {
+            .bc-logo {
+                top: 69%;
+                font-size: 35px;
+                left: 40px;
+            }
+
+            .bc_img {
+                left: -580px;
+                width: 1191px;
+                height: 100%;
+            }
+
+            body > #header > div {
+                left: 15px;
+            }
+
+            body > #header > .m {
+                opacity: 1;
+                left: 70px;
+            }
+
+            body > #header > .b {
+                opacity: 1;
+                left: 140px;
+            }
+
+            body > #header > .a {
+                opacity: 1;
+                left: 210px;
+            }
+
+            body > #header > .z {
+                opacity: 1;
+                left: 280px;
+            }
+        }
+
+        #header > div {
+            left: 15px;
+        }
+
+        #header > .m {
+            opacity: 1;
+            left: 100px;
+        }
+
+        #header > .b {
+            opacity: 1;
+            left: 200px;
+        }
+
+        #header > .a {
+            opacity: 1;
+            left: 300px;
+        }
+
+        #header > .z {
+            opacity: 1;
+            left: 400px;
+        }
+
 
     </style>
 </head>
 <body>
-<img class="bc_img" src="http://orj6ooggn.bkt.clouddn.com/wallhaven-518771.jpg">
+<img class="bc_img" src="http://orj6ooggn.bkt.clouddn.com/wallhaven-147423.jpg">
 <!--<a href="#"><img id="bc_font" src="http://orj6ooggn.bkt.clouddn.com/bc_font01.png"></a>-->
 <div class="bc-logo">I can and I will</div>
 <!--头部-->
@@ -75,9 +158,9 @@
 
 <script src="js/jquery-3.2.1.min.js"></script>
 <script>
-    $("#con-head").click(function(){
-          
-            
+    $("#con-head").click(function () {
+
+
         $("#Music").toggleClass('m');
         $("#blog").toggleClass('b');
         $("#audio").toggleClass('a');
@@ -87,7 +170,44 @@
         $("#con-head>div:nth-child(2)").toggleClass("two");
         $("#con-head>div:nth-child(3)").toggleClass("three");
     })
+    // 下雪特效
 
+     $(function(){
+         var wh=$(window).height();
+         setInterval(function(){
+             var f=$(document).width();
+             var e=Math.random()*f-10;//雪花的定位left值
+             var o=0.3+Math.random();//雪花的透明度
+             var fon=100+Math.random()*30;//雪花大小
+             var l = e - 120 + 300 * Math.random();//雪花的横向位移
+             var k=120 + 9000 * Math.random();
+             var html;
+             switch(Math.floor(Math.random()*3+1)){
+                 case 1:
+                   html = "<div class='snow'><div>";
+                     break;
+                 case 2:
+                   html = "<div class='snow'><div>";
+                     break;
+                 case 3:
+                     html = "<div class='snow'><div>";
+                     break;
+                 case 4:
+                     html = "<div class='snow'><div>";
+                     break;
+             }
+             $(html).clone().appendTo("body").css({
+               left:e+"px",
+               opacity:o,
+               "font-size":fon,
+             }).animate({
+               top:(wh*1.2)+"px",
+               left:l+"px",
+               opacity:0.1,
+             },k,"linear",function(){$(this).remove()})
+         },100)
+     })
+    // 下雪特效
 </script>
 </body>
 </html>
