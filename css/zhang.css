@@ -1,4 +1,4 @@
-----------------------È«¾Ö----------------------*/
+/*----------------------È«¾Ö----------------------*/
 *{
     padding:0;margin:0;
 }
@@ -8,10 +8,10 @@ html,body{
 a{text-decoration: none;color:inherit;transition: all 0.5s;}
 a:hover{color:teal;}
 input::-webkit-input-placeholder{
-    color:orange;
+    color:teal;
 }
 input:-ms-input-placeholder{
-    color:orange;
+    color:teal;
 }
 
 /*----------------------È«¾Ö----------------------*/

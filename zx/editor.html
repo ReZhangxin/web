@@ -7,46 +7,193 @@
     <link rel="icon" href="http://orj6ooggn.bkt.clouddn.com/icon.png">
     <link rel="stylesheet" href="../css/zhang.css"/>
     <style>
-        *{
-            margin: 0;
-            padding: 0;}
+        html{height: 100%;}
+
         body{
             height:100%;
             width:100%;
             color:white;
+            background: url("http://orj6ooggn.bkt.clouddn.com/wallhaven-311962.jpg") ;
+            background-size:100%;
         }
-        #bc_img{
-            width:100%;height:100%;
-            position: fixed;top:0;left: 0;
+
+        .on{
+            position: fixed;width: 100%;height:100%;left:0;top:0;
+            background-color: rgba(0,0,0,.5);z-index: 98;transition: all 1s;
         }
+        .on>.warning>img{margin-left: 25px;}
+        .on>.warning>.know{font-size:15px;border:1px solid teal;border-radius: 5px;padding:5px 7px;transition:all 1s;}
+        .on>.warning>.know:hover{background-color:#abcdef;}
+        body>div>.warning{
+            display: none;
+        }
+        body>.on>div{
+            position: fixed;width: 366px;height:220px;background-color:rgba(189, 195, 199,1.0);
+            left: calc(50% - 183px);top: calc(50% - 110px);z-index: 99;border-radius: 10px;
+            display: block;
+
+        }
+
+
+        .on>div>div{
+            width:4em;
+            position: absolute;right:2em;bottom:10px;
+            cursor: pointer;color:teal;
+            opacity:1;
+        }
+
         .form{
             width: 830px;
-            height: 458px;
-            position: absolute;
+            height:458px;
+            position: fixed;
             left:calc(50% - 415px);
             top:calc(50% - 229px);
             display: flex;
             display: -ms-flexbox;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .form>div{
+            background:linear-gradient(to top,#3B243C ,#9DA494 );opacity: 0.7;flex: 1;
+        }
+        .form>.left{position: relative;left:-415px;}
+        .form>.left>div{
+            text-align: center;font-family: Consolas;font-size: 1.5em;line-height: 50px;
+            margin-left: -800px;
+        }
+        .form>.right{position: relative;left:415px;}
+        .form>.right>input{
+            width: 300px;
+            height:50px;
+            border:1px solid transparent;
+            border-radius: 5px;
+            outline: 0;
+            text-indent: 2em;
+            transition:all 0.7s;
+            margin:20px 50px ;
+
+
 
         }
-        .form .left{
-            background-color: aquamarine;opacity: 0.3;flex: 1;
+        .form>.right>input:focus{border-color:teal;}
+        .form>.right>input[type=text]{margin-top: 90px;}
+        .form>.right>input[type=submit]{text-indent: 0;color:teal;cursor: pointer;}
+        .form>.right>input[type=submit]:hover{background-color: #abcdef;opacity: 0.7;}
+
+        .click{
+            width: 80px;height:80px;border-radius: 80px;border:2px solid #abcdef;
+            cursor: pointer;text-align: center;
+            line-height:80px;
+            position: fixed;left:calc(50% - 40px);top:calc(50% - 40px);
+            z-index: 999;
         }
-        .form .right{
-            flex: 1;background-color: rgba(255,255,255,0.8);
+        .click:before{
+            content:"";
+            width:80px;
+            height:80px;
+            border:2px solid #abcdef;
+            border-radius: 80px;
+            position: absolute;
+            left:0;top:0;z-index:9;
+            animation: light 1.7s infinite;
+
+        }
+        @keyframes light{
+            0%{
+                transform: scale(1);border-color: transparent;
+            }
+
+            100%{
+                transform: scale(2); opacity: 0; background-color: #abcdef;
+            }
         }
     </style>
 </head>
 <body>
-<img id="bc_img" src="http://orj6ooggn.bkt.clouddn.com/wallhaven-311962.jpg">
+<div>
+    <div class="warning">
+        <img src="../img/error.png" alt="">
+        <div class="know">我知道了</div>
+    </div>
+</div>
 
-<form class="form" action="../admin/admin.html" method="post">
-    <div class="left"></div>
-    <div class="right"></div>
-</form>
+<div class="click">
+    Come
+</div>
+<div class="form">
+    <div class="left">
+        <div style="margin-top: 106px">My precious you for me,</div>
+        <div style="font-size: 18px">Magic in my tiny heart。</div>
+        <div>My precious you for me wow...</div>
+        <div style="font-size: 18px">
+            while (life < die){learn ++;}
+        </div>
+    </div>
+    <div class="right">
+        <input type="text" name="username" placeholder="Username"><br>
+        <input type="password" name="password" placeholder="Password"><br>
+        <input type="submit" name="submit" value="Sign in">
+    </div>
+</div>
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="../js/jquery-3.2.1.min.js"></script>
 <script>
+    $(".click").click(function(){
+       $(".form").animate({
+           opacity:1},700);
+       $(".left>div").animate({marginLeft:"32px"},800,function () {
+           $(".left>div").animate({marginLeft:"0"},400)
+       });
+        $(".form>.left").animate({
+            left:0,
+            opacity:0.7},500);
+       $(".form>.right").animate({
+            left:0,
+           opacity:0.7},500);
+       $(this).animate({opacity:0},500);
+    });
+    $(".know").click(function(){
+        $("body>div:first-child").removeClass("on");
+    });
+
+
+
+    $(":submit").click(function(){
+        var user= $(":text").val().trim();
+        var pwd = $(":password").val().trim();
+        $.ajax({
+            url:"../admin/login.php",
+            type:"POST",
+            data:{"user":user,"password":pwd},
+            dataType:"json",
+            success:function(res){
+                if(res==1)
+                {
+                    alert('用户名错误')
+                }
+                else if(res==2)
+                {
+                    alert('密码错误')
+                }
+                else{
+                    window.location="../admin/admin.php"
+                }
+
+
+            }
+        })
+
+//        if(user == null || user == "" ||pwd == null || pwd == ""){
+//            $("body>div:first-child").addClass("on");
+//            return false;
+//        }else if(user==obj.username&&pwd==obj.password){
+//            return true;
+//        }else{
+//            return false;
+//        }
+    });
+
+
 
 </script>
 
