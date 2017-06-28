@@ -6,26 +6,41 @@
     <title>张鑫</title>
     <link rel="icon" href="http://orj6ooggn.bkt.clouddn.com/icon.png">
     <link rel="stylesheet" href="../css/zhang.css"/>
+
     <style>
         body{
             color:white;
         }
         a:hover{color:red;}
+        .icon {
+            width: 1em; height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+
         #con-head>div{
             border-bottom-color:white;
         }
         #con-head:hover div{
             border-bottom-color: red;
         }
-        @media screen and (max-width: 1023px) and (min-width: 763px){
+        .bc_img{height:100%;width: 100%;}
+         @media screen and (max-width: 1024px) and (min-width: 768px){
             
             .bc_img{
-                left: -445px;width: 2216px;height: 100%;
+                left: -700px;width: 2216px;
+            }   
+        }
+        @media screen and (max-width: 1023px) and (min-width: 769px){
+            
+            .bc_img{
+                left: -661px;width: 2216px;
             }   
         }
         @media screen and (max-width: 415px){
             .bc_img{
-                left: -239px;width: 1154px;height: 100%;
+                left: -380px;width: 1154px;
 
             }    
 
@@ -42,7 +57,8 @@
         #con-head:hover div.two{
             border-bottom-color: transparent;
         }
-        #header>div{left:15px;}
+
+        #header>div{left:15px;width: 100px;}
         #header>.h{opacity: 1;left: 100px;}
         #header>.b{opacity: 1;left: 200px;}
         #header>.a{opacity: 1;left: 300px;}
@@ -50,7 +66,7 @@
     </style>
 </head>
 <body>
-<img class="bc_img" src="http://orj6ooggn.bkt.clouddn.com/wallhaven-455154.jpg">
+<img class="bc_img" src="http://os8hd0fib.bkt.clouddn.com/music.jpg">
 <!--头部-->
 <div id="con-head">
     <div></div>
@@ -64,8 +80,27 @@
     <div id="Personal"><a href="#">Zhangss</a></div>
 </header>
 <!--头部-->
+<section></section>
+
+<footer>
+    <div class="f-singer"></div>
+    <div id="m-control">
+        <div ></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="volume">
+        <span></span>
+        <div></div>
+    </div>
+</footer>
+
+
+
+
 
 <script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/iconfont.js"></script>
 <script>
     $("#con-head").click(function(){
           

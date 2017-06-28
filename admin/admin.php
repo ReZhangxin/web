@@ -33,7 +33,7 @@
             width:300px;
             height:90%;
             border-radius: 10px;
-            background-color: rgba(44, 62, 80,0.6);
+            background-color: rgba(0, 0, 0,0.6);
 
         }
         .holder div{
@@ -52,7 +52,7 @@
             width: 70%;
             height:90%;
             border-radius: 10px;
-            background-color: rgba(44, 62, 80,0.5);
+            background-color: rgba(0, 0, 0,.6);
 
 
         }
@@ -61,11 +61,12 @@
     </style>
 </head>
 <body>
-<img id="bc_img" src="http://orj6ooggn.bkt.clouddn.com/wallhaven-311962.jpg">
+<img id="bc_img" src="http://os8hd0fib.bkt.clouddn.com/admin.jpg">
 
 <!-- 左边栏-->
 
 <div class="holder">
+
     <div id="music">Music
         <div><span>音乐管理</span></div>
     </div>

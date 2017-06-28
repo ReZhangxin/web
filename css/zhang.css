@@ -1,12 +1,12 @@
-/*----------------------È«¾Ö----------------------*/
+/*----------------------全局----------------------*/
 *{
     padding:0;margin:0;
 }
 html,body{
-    color:teal;-webkit-user-select: none;font-family: Arial;
+    -webkit-user-select: none;font-family: Arial;
 }
 a{text-decoration: none;color:inherit;transition: all 0.5s;}
-a:hover{color:teal;}
+a:hover{color:inherit;}
 input::-webkit-input-placeholder{
     color:teal;
 }
@@ -14,18 +14,24 @@ input:-ms-input-placeholder{
     color:teal;
 }
 
-/*----------------------È«¾Ö----------------------*/
+/*----------------------全局----------------------*/
+
+
+/*----------------------字体----------------------*/
+
+
+/*----------------------字体----------------------*/
 
 
 
 /*----------------------µ¼º½----------------------*/
 .bc_img{
-    position: fixed;left:0;top:0;width: 100%;height: 100%;
+    position: fixed;left:0;top:0;
 }
 /*------------µã»÷³öÏÖµ¼º½------------*/
 
 #con-head{
-    position: fixed;left:39px;top:50px;
+    position: fixed;left:39px;top:10px;
     transition: all 1s;
     height:26px;z-index: 999;
     cursor: pointer;
@@ -67,9 +73,9 @@ input:-ms-input-placeholder{
 /*光晕效果*/
 /*------------µã»÷³öÏÖµ¼º½------------*/
 
-/*------------µ¼º½ÄÚÈÝ----------------*/
+/*------------header----------------*/
 #header{
-    position: fixed;left:15px;top:54px;z-index: 99;
+    position: fixed;left:15px;top:10px;z-index: 99;
 }
 #header>div{  
     opacity: 0;  
@@ -87,7 +93,7 @@ input:-ms-input-placeholder{
            
             
         }
-/*------------µ¼º½ÄÚÈÝ-----------------*/
+/*------------header-----------------*/
 
 
 /*----------------------µ¼º½----------------------
