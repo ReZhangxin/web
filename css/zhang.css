@@ -31,7 +31,7 @@ input:-ms-input-placeholder{
 /*------------µã»÷³öÏÖµ¼º½------------*/
 
 #con-head{
-    position: fixed;left:39px;top:10px;
+    position: fixed;left:60px;top:40px;
     transition: all 1s;
     height:26px;z-index: 999;
     cursor: pointer;
@@ -41,24 +41,24 @@ input:-ms-input-placeholder{
 }
 #con-head .one{
         
-        transform: rotate(45deg);
+        transform: rotate(-90deg) translateY(9px);
 }
 #con-head .two{
-        border-bottom-color: transparent;
+        transform: rotate(90deg);
 }
 #con-head .three{
         
-        transform:rotate(-45deg);
+        transform:rotate(90deg) translate(-13px,9px) ;
 }
 /*光晕效果*/
 #con-head:before{
     content:"";
     width:20px;
     height:20px;
-    border:1px solid white;
+    border:1px solid #4CEEA3;
     border-radius: 20px;
     position: absolute;
-    left:-1px;top:2px;z-index:9;
+    left:-1px;top:3px;z-index:9;
     animation: light 1.5s infinite;
 }
 @keyframes light{
@@ -67,7 +67,7 @@ input:-ms-input-placeholder{
     }
    
     100%{
-        transform: scale(2.5); opacity: 0; background-color: white;
+        transform: scale(2.5); opacity: 0; background-color: #4CEEA3;
     }
 }
 /*光晕效果*/

@@ -9,41 +9,29 @@
 
     <style>
         body{
-            color:white;
+            color:#4CEEA3;font-family: Consolas;
         }
-        a:hover{color:red;}
+        a{color:gainsboro;}
+        a:hover{color:#4CEEA3;}
+        i{font-style: normal;}
         .icon {
             width: 1em; height: 1em;
             vertical-align: -0.15em;
             fill: currentColor;
+
             overflow: hidden;
         }
-
+        #con-head{
+            left:110px;
+        }
         #con-head>div{
-            border-bottom-color:white;
+            border-bottom-color:gainsboro;
         }
         #con-head:hover div{
-            border-bottom-color: red;
+            border-bottom-color: #4CEEA3;
         }
-        .bc_img{height:100%;width: 100%;}
-         @media screen and (max-width: 1024px) and (min-width: 768px){
-            
-            .bc_img{
-                left: -700px;width: 2216px;
-            }   
-        }
-        @media screen and (max-width: 1023px) and (min-width: 769px){
-            
-            .bc_img{
-                left: -661px;width: 2216px;
-            }   
-        }
-        @media screen and (max-width: 415px){
-            .bc_img{
-                left: -380px;width: 1154px;
-
-            }    
-
+        
+        @media screen and (max-width: 415px){     
             body>#header>div{left:15px;}
             body>#header>.h{opacity: 1;left: 70px;}
             body>#header>.b{opacity: 1;left: 140px;}
@@ -51,22 +39,110 @@
             body>#header>.z{opacity: 1;left: 280px;}
               
         }
-        #con-head:hover div{
-            border-bottom-color: red;
+        #header>div{left:85px;width: 100px;top:-40px;}
+        #header>.h{opacity: 1;left: 50px;top:0;}
+        #header>.b{opacity: 1;left: 115px;top:0;}
+        #header>.a{opacity: 1;left:35px;top:37px;}
+        #header>.z{opacity: 1;left: 130px;top:37px;}
+        /*音乐资源*/
+        section{width: 100%;min-width: 1024px;background-color: gainsboro;
+            display: flex;height:685px;
         }
-        #con-head:hover div.two{
-            border-bottom-color: transparent;
+        section>#s-left{
+           flex: 2;background-color: white;height: 685px;
+
+        }
+        section>#s-left>div{
+            width: 100%;height:100px;line-height: 100px;text-align: center;
+            color: gainsboro;
+
+        }
+        section>#s-left>div:hover{
+            box-shadow: 0 0 20px gainsboro;cursor:pointer;color: #4CEEA3;
+            transition: all 0.2s;
         }
 
-        #header>div{left:15px;width: 100px;}
-        #header>.h{opacity: 1;left: 100px;}
-        #header>.b{opacity: 1;left: 200px;}
-        #header>.a{opacity: 1;left: 300px;}
-        #header>.z{opacity: 1;left: 400px;}
+        section>#s-left>div>a{
+            width: 100%;display: inline-block;
+        }
+        #s-left>.s-info{
+            margin:100px auto 0;
+        }
+        #s-left .s-img{
+            display: inline-block;
+            width: 50px;
+            height: 50px;border-radius: 100%;
+            background: url("../img/1494990191(1).png");
+            background-size: cover;
+            vertical-align: middle;
+        }
+
+        #s-left i{
+            display: inline-block;margin-right: 20px;
+        }
+        section>#s-right{
+            flex: 10;background-color:#F9F9F9;height: 685px;position: relative;
+        }
+            /*Music*/
+        #Music{
+            width: 100%;
+            height:100%;
+            position: absolute;overflow: auto;
+        }
+        #Music>div{
+            width: 220px;height:220px;background-color: #4CEEA3;
+            margin:40px 30px;
+            float: left;
+            transition: all 0.5s;
+        }
+        #Music>div:hover{
+            box-shadow: 0 0 40px gainsboro;
+            transform: translateY(-5px);
+        }
+            /*Music*/
+        /*音乐资源*/
+
+        /*音乐播放台*/
+        footer{
+            width: 100%;display: flex;height:80px;
+            position: fixed;bottom:0;left:0;z-index: 666;
+            box-shadow: 0 0 40px gainsboro;
+        }
+        footer>.f-singer{height:100%;
+            background-color: white;flex:2;
+        }
+        footer>#m-control{
+            background-color: white;flex:8;
+        }
+
+        footer>#m-control>.console>div{
+            display: inline-block;font-size: 1.5em;margin:0 5px;cursor: pointer;
+            transition: all 1s;
+        }
+        footer>#m-control>.console>div:hover{
+            transform: scale(1.2);
+        }
+
+        #m-control>.console{
+            margin:-5px auto ;
+            width:250px;
+        }
+        #m-control #m-stop{
+            cursor:pointer;
+            font-size: 3em;position: relative;z-index: 1}
+        #m-control #m-stop:after{
+            content:"";
+            width: 65px;height:65px;border-radius: 100%;
+            background-color: white;position: absolute;z-index:-1;
+            top:-6px;left:-8px;
+        }
+        footer>.volume{
+            background-color: white;flex:2;
+        }
+        /*音乐播放台*/
     </style>
 </head>
 <body>
-<img class="bc_img" src="http://os8hd0fib.bkt.clouddn.com/music.jpg">
 <!--头部-->
 <div id="con-head">
     <div></div>
@@ -80,20 +156,123 @@
     <div id="Personal"><a href="#">Zhangss</a></div>
 </header>
 <!--头部-->
-<section></section>
 
+<!--内容-->
+<section>
+    <div id="s-left">
+
+        <div class="s-info">
+            <div class="s-img">
+
+            </div>
+            <span>Railgun</span>
+            <i>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-xinxi"></use>
+                </svg>
+
+            </i>
+        </div>
+        <div><a href="#"><i><svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-yinle"></use>
+            </svg></i>Music</a>
+        </div>
+        <div><a href="#"><i><svg class="icon" aria-hidden="true" color="red">
+            <use xlink:href="#icon-aixin"></use>
+            </svg></i>MyLove</a>
+        </div>
+    </div>
+    <div id="s-right">
+
+        <!--Music-->
+        <div id="Music">
+            <div>
+
+            </div>
+            <div>
+                <img src="" alt="">
+                <span></span>
+            </div>
+            <div>
+                <img src="" alt="">
+                <span></span>
+            </div>
+            <div>
+                <img src="" alt="">
+                <span></span>
+            </div>
+            <div>
+                <img src="" alt="">
+                <span></span>
+            </div>
+            <div>
+                <img src="" alt="">
+                <span></span>
+            </div>
+            <div>
+                <img src="" alt="">
+                <span></span>
+            </div>
+            <div>
+                <img src="" alt="">
+                <span></span>
+            </div>
+
+        </div>
+        <!--Music-->
+
+        <!--MyLove-->
+        <div id="Love">
+
+        </div>
+        <!--MyLove-->
+    </div>
+</section>
+<!--内容-->
+
+<!--音乐控制台-->
 <footer>
-    <div class="f-singer"></div>
+    <div class="f-singer">
+
+    </div>
     <div id="m-control">
-        <div ></div>
-        <div></div>
-        <div></div>
+        <div class="console">
+            <div >
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-xunhuan"></use>
+                </svg>
+            </div>
+            <div>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-pre"></use>
+                </svg>
+            </div>
+
+            <div id="m-stop" class="m-on">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-zanting"></use>
+                </svg>
+            </div>
+
+            <div>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-qianjin"></use>
+                </svg>
+            </div>
+            <div>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-suiji"></use>
+                </svg>
+            </div>
+        </div>
+
     </div>
     <div class="volume">
         <span></span>
         <div></div>
     </div>
 </footer>
+<!--音乐控制台-->
 
 
 
@@ -101,10 +280,11 @@
 
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/iconfont.js"></script>
+<script src="../js/wow.min.js"></script>
 <script>
+    new WOW().init();
+
     $("#con-head").click(function(){
-          
-            
         $("#Home").toggleClass('h');
         $("#blog").toggleClass('b');
         $("#audio").toggleClass('a');
@@ -113,7 +293,8 @@
         $("#con-head>div:nth-child(1)").toggleClass("one");
         $("#con-head>div:nth-child(2)").toggleClass("two");
         $("#con-head>div:nth-child(3)").toggleClass("three");
-    })
+    });
+
 
 </script>
 </body>

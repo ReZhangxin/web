@@ -18,14 +18,14 @@
             margin: 0;
             padding: 0;}
         body{
-            height:100%;
+           
             width:100%;
-            color:white;
+            color:black;
+            background: url("http://os8hd0fib.bkt.clouddn.com/admin.jpg") ;
+            background-size: cover; 
+
         }
-        #bc_img{
-            width:100%;height:100%;
-            position: fixed;top:0;left: 0;
-        }
+        
         /*左边栏*/
 
         .holder{
@@ -33,8 +33,8 @@
             width:300px;
             height:90%;
             border-radius: 10px;
-            background-color: rgba(0, 0, 0,0.6);
-
+            background: linear-gradient(45deg, #DDD6D6, #7F7373);
+            opacity: 0.7;
         }
         .holder div{
             margin:50px;
@@ -50,9 +50,11 @@
         #contains{
             position: absolute;left:400px;top:50px;
             width: 70%;
+            min-width: 800px;
             height:90%;
             border-radius: 10px;
-            background-color: rgba(0, 0, 0,.6);
+            background: linear-gradient(45deg, #DDD6D6, #7F7373);
+            opacity: 0.7;
 
 
         }
@@ -61,7 +63,6 @@
     </style>
 </head>
 <body>
-<img id="bc_img" src="http://os8hd0fib.bkt.clouddn.com/admin.jpg">
 
 <!-- 左边栏-->
 
