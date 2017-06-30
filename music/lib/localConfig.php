@@ -1,0 +1,9 @@
+<?php
+	$api='http://api.xiami.com/api/';
+	$localList=array(
+		'?api_key=0e4b27543f6179aad9cbfd1fe1fe6d98&api_sig=179b013744669c9033fbaaa97c5eacaa&call_id=1489652134.941367&id=1774078768&method=Songs.detail',
+		'?api_key=0e4b27543f6179aad9cbfd1fe1fe6d98&api_sig=301ad24a7d9cff83ad83bbf03d2f2e8d&call_id=1489651308.348762&id=1774001806&method=Songs.detail',
+		'?api_key=0e4b27543f6179aad9cbfd1fe1fe6d98&api_sig=981999bbace28093d32cac78116038db&call_id=1489395778.770397&id=1773384009&method=Songs.detail',
+		'?api_key=0e4b27543f6179aad9cbfd1fe1fe6d98&api_sig=b9e38f2f8f9433dad4743d10875a5a89&call_id=1489679061.311202&id=1775256974&method=Songs.detail'
+		)
+?>

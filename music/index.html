@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+	<meta name="full-screen" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="screen-orientation" content="portrait">
+	<meta name="browsermode" content="application">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="x5-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="x5-page-mode" content="app">
+	<title>music</title>
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<div class="music-demo-container">
+		
+		<div class="music-box">
+			<div class="music-album-img">
+				<div class="music-album-container">
+					<img src="" alt="" class="jvc-album-img">
+					<div class="album_info">
+						<img src="" alt="" class="jvc-album-singer-img">
+						<div class="singer-desc">
+							<p class="jvc-album-song-name song-name"></p>
+							<p class="jvc-album-singer-name singer-name"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="music">
+				<ul class="jvc-music-lrc"></ul>
+			</div>
+			<audio src="" id="audio" autoplay></audio>
+		</div>
+
+		<div class="music-list"></div>
+
+		<div class="search-result"></div>
+		
+		<div class="music-list-item" id="jv-template-list-item">
+			<img src="images/music-icon.png" alt="" class='jvc-info-music-album-img'>
+			<div class="list-info">
+				<p class="info-music-name"><span class="jvc-info-music-name"></span> - <span class="jvc-info-music-singer"></span></p>
+				<p class="info-music-album jvc-info-music-album"></p>
+			</div>
+		</div>
+
+
+		<div class="search">
+			<input type="text" id="song_name" placeholder="">
+			<img src="images/search-btn.png" alt="" class="search-btn">
+		</div>
+
+	</div>
+	<div class="dialog">
+		
+	</div>
+</body>
+</html>
+<script>
+	$(function(){
+		$('#jv-template-list-item').hide();
+		var host='lib/';
+		var html;
+		var id='1774078768';
+		loadMusic(id);
+		
+		// 通过音乐ID获取音乐
+	 	function loadMusic(id){
+		 	$.ajax({
+				url:host+'getSongDetail.php',
+				type:'POST',
+				data:{'id':id},
+				dataType:'json',
+				success:function(res){
+					console.log(res);
+					var song=res['data'].song;
+					if(song.listen_file==''){
+						return false;
+					}else{		
+						$('.jvc-album-singer-name').html(song.artist_name);
+						$('.jvc-album-song-name').html(song.song_name);
+						$('audio').attr('src',song.listen_file);
+						loadSingerImg(id);
+						loadAlbumImg(id);
+						loadLyric(id);
+					}	
+				}
+			})
+	 	}
+
+	 	// 通过音乐ID获取音乐专辑高清图
+	 	function loadAlbumImg(id){
+	 		$.ajax({
+	 			url:host+'getUrl.php',
+	 			data:{'id':id},
+	 			dataType:'json',
+	 			type:'POST',
+	 			success:function(res){
+	 				if(res.data.trackList==null){
+	 					$('.dialog').html(res.message).fadeIn(500);
+	 					setTimeout($('.dialog').fadeOut(500),5000);
+	 					return false;
+	 				}else{
+	 					var src=res.data.trackList[0].album_pic;
+	 					$('.jvc-album-img').attr('src',src);
+	 				}
+	 			}
+	 		})
+	 	}
+
+	 	// 通过歌曲ID获取歌手图片
+	 	function loadSingerImg(id){
+	 		$.ajax({
+	 			url:host+'getUrl.php',
+	 			data:{'id':id},
+	 			dataType:'json',
+	 			type:'POST',
+	 			success:function(res){
+	 				if(res.data.trackList==null){
+	 					$('.dialog').html(res.message).fadeIn(500);
+	 					setTimeout($('.dialog').fadeOut(500),5000);
+	 					return false;
+	 				}else{
+	 					var src='http://img.xiami.net/'+res.data.trackList[0].singersSource[0].artistLogo;
+	 					$('.jvc-album-singer-img').attr('src',src);
+	 				}		
+	 			}
+	 		})
+	 	}
+
+	 	// 通过专辑ID获取专辑信息
+	 	function loadAlbum(id){
+	 		$.ajax({
+	 			url:host+'getAlbumDetail.php',
+	 			data:{'id':id},
+	 			dataType:'json',
+	 			type:'POST',
+	 			success:function(res){
+	 				console.log(res);
+	 			}
+	 		})
+	 	}
+
+	 	// 获取歌词
+	 	function loadLyric(id){
+	 		$.ajax({
+	 			url:host+'getLyric.php',
+	 			dataType:'json',
+	 			type:'POST',
+	 			data:{'id':id},
+	 			success:function(res){
+	 				var lyric=parseLyric(res);
+	 				$('.jvc-music-lrc').empty();
+					for(var i in lyric)
+					{
+						var li="<li id='time-"+i+"'>"+lyric[i]+"</li>";
+						$('.jvc-music-lrc').append(li);
+					}
+	 			}
+	 		})
+	 	}
+
+
+		// 解析歌词字符串
+		function parseLyric(lyric){
+			var lyrics = lyric.split("\n");
+		    var lyricObj = {};
+		    for(var i=0;i<lyrics.length;i++){
+		        var lyric = decodeURIComponent(lyrics[i]);
+		        var timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g;
+		        var timeRegExpArr = lyric.match(timeReg);
+		        if(!timeRegExpArr)continue;
+		        var clause = lyric.replace(timeReg,'');
+		        for(var k = 0,h = timeRegExpArr.length;k < h;k++) {
+		            var t = timeRegExpArr[k];
+		            var min = Number(String(t.match(/\[\d*/i)).slice(1)),
+		                sec = Number(String(t.match(/\:\d*/i)).slice(1));
+		            var time = min * 60 + sec;
+		            lyricObj[time] = clause;
+		        }
+		    }
+		    return lyricObj;
+		}
+
+		// 歌词滚动
+		document.getElementById('audio').onplay=function(){
+			var me=this;
+			setInterval(function(){
+				var t=Math.round(me.currentTime);
+				var x=$('.jvc-music-lrc li').index($('#time-'+t));
+				if(x!==-1){
+					var h=$('.jvc-music-lrc').offset().top;
+					var h1=$('#time-'+t).offset().top;
+					var height=h1-h;
+					$('.jvc-music-lrc').animate({'margin-top':-(height-30)+'px'},1000);
+					$('#time-'+t).addClass('active').siblings('li').removeClass('active')
+				}
+			},1000);		
+		}
+
+		// 旋转动画
+		// $('.jvc-album-img').click(function(){
+		// 	$('.cube').addClass('animate');
+		// })
+
+
+		function loadList(){
+			$.ajax({
+				url:host+'getLocalList.php',
+				dataType:'json',
+				success:function(res){
+					$(".music-list").empty();
+					for(var i=0;i<res.length;i++)
+					{
+						var id='list-item-'+i;
+						$('#jv-template-list-item').clone().attr('id',id).show().appendTo($('.music-list'));
+						$("#"+id).find('.jvc-info-music-name').html(res[i].song_name);
+						$('#'+id).find('.jvc-info-music-singer').html(res[i].artist_name);
+						$('#'+id).find('.jvc-info-music-album').html(res[i].album_name);
+						$('#'+id).attr('song-id',res[i].song_id);
+					}
+				}
+			});
+		}
+
+		loadList();
+
+		$('body').delegate('.music-list-item','click',function(){
+			loadMusic($(this).attr('song-id'));
+		})
+
+		// 搜索模块
+		$(".search-btn").click(function(){
+			var key=$('#song_name').val();
+			$.ajax({
+				url:host+'search.php',
+				type:'POST',
+				data:{'song':key,'limit':10},
+				dataType:'json',
+				success:function(res){
+					$(".search-result").empty();
+					var songs=res.data.songs;
+					for(var i=0;i<songs.length;i++)
+					{
+						var id='search-item-'+i;
+						$('#jv-template-list-item').clone().attr('id',id).show().appendTo($(".search-result"));
+						$("#"+id).find('.jvc-info-music-name').html(songs[i].song_name);
+						$('#'+id).find('.jvc-info-music-singer').html(songs[i].artist_name);
+						$('#'+id).find('.jvc-info-music-album').html(songs[i].album_name);
+						$('#'+id).find('.jvc-info-music-album-img').attr('src',songs[i].album_logo);
+						$('#'+id).attr('song-id',songs[i].song_id);
+					}
+				}
+			})
+		})
+
+
+
+
+
+	})
+
+</script>
